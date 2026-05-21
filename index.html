@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akila — Alquilá sin comisión · Uruguay</title>
+    <meta name="description" content="Conectá directo con propietarios e inquilinos. Sin inmobiliarias. Próximamente en Uruguay.">
+    <link rel="canonical" href="https://akila.uy/">
+    <link rel="icon" href="/Logo.svg" type="image/svg+xml">
+    <meta property="og:title" content="Akila — Alquilá sin comisión">
+    <meta property="og:description" content="Conectá directo con propietarios e inquilinos. Sin intermediarios. Sin ese mes + IVA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akila.uy/">
+    <meta property="og:image" content="https://akila.uy/Logo.svg">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Akila — Alquilá sin comisión">
+    <meta name="twitter:description" content="Conectá directo con propietarios e inquilinos. Sin intermediarios. Sin ese mes + IVA.">
+    <meta name="twitter:image" content="https://akila.uy/Logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="nav" class="nav nav--top" role="navigation" aria-label="Navegación principal">
+    <div class="container nav__inner">
+        <a href="#" class="nav__logo" aria-label="Akila — inicio">
+            <img src="Logo.svg" alt="" class="nav__logo-img" aria-hidden="true" width="28" height="28">
+            <span class="nav__logo-text">Akila</span>
+        </a>
+        <div class="nav__actions">
+            <button class="nav__btn nav__btn--ghost" id="nav-propietario" aria-haspopup="dialog">Propietarios</button>
+            <button class="nav__btn nav__btn--solid" id="nav-inquilino"   aria-haspopup="dialog">Inquilinos</button>
+        </div>
+    </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero" aria-label="Sección principal">
+    <div class="container hero__layout">
+
+        <!-- Columna izquierda: titular masivo -->
+        <div class="hero__copy">
+            <p class="hero__eyebrow">🇺🇾 Próximamente en Uruguay</p>
+            <h1 class="hero__title">
+                <span class="hero__title-line">Alquilar</span>
+                <span class="hero__title-line">sin pagar</span>
+                <em class="hero__title-line hero__title-italic">comisión.</em>
+            </h1>
+            <p class="hero__sub">Conectá directo con propietarios e inquilinos.<br>Sin intermediarios. Sin ese mes&nbsp;+&nbsp;IVA.</p>
+        </div>
+
+        <!-- Columna derecha: card crema desplazada -->
+        <div class="hero__card-col">
+            <div class="hero__form-card">
+                <div class="hfc__head">
+                    <div>
+                        <p class="hfc__eyebrow">Lista de espera</p>
+                        <h2 class="hfc__title">Sé de los primeros</h2>
+                    </div>
+                    <div class="hfc__counter">
+                        <span class="count-num" id="hero-count">143</span>
+                        <span class="hfc__counter-label">esperando</span>
+                    </div>
+                </div>
+
+                <form id="hero-form" novalidate>
+                    <div class="form-group">
+                        <label for="h-email" class="form-label">Email</label>
+                        <input type="email" id="h-email" name="email" class="form-input"
+                               placeholder="tu@email.com" autocomplete="email"
+                               aria-required="true" aria-describedby="h-email-err">
+                        <span class="form-error" id="h-email-err" role="alert" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="h-phone" class="form-label">Teléfono</label>
+                        <input type="tel" id="h-phone" name="phone" class="form-input"
+                               placeholder="+598 9X XXX XXXX" autocomplete="tel"
+                               aria-required="true" aria-describedby="h-phone-err">
+                        <span class="form-error" id="h-phone-err" role="alert" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                        <fieldset class="form-fieldset">
+                            <legend class="form-label">Soy</legend>
+                            <div class="form-radios">
+                                <label class="form-radio">
+                                    <input type="radio" name="hrol" value="propietario" required>
+                                    <span class="radio-box"></span>
+                                    <span>Propietario</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="hrol" value="inquilino">
+                                    <span class="radio-box"></span>
+                                    <span>Inquilino</span>
+                                </label>
+                            </div>
+                            <span class="form-error" id="h-rol-err" role="alert" aria-live="polite"></span>
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <label for="h-rec" class="form-label">
+                            Me gustaría que Akila tenga…
+                            <span class="form-label-opt">(opcional)</span>
+                        </label>
+                        <textarea id="h-rec" name="rec" class="form-input form-textarea"
+                                  placeholder="Contanos qué feature te gustaría ver..." rows="2"></textarea>
+                    </div>
+                    <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    <button type="submit" class="btn btn--primary btn--full">UNIRME A LA LISTA</button>
+                    <p class="form-hint">Sin spam · solo te avisamos cuando lancemos.</p>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Strip de stats -->
+    <div class="hero__strip">
+        <div class="container hero__strip-inner">
+            <div class="hero__stat">
+                <span class="hero__stat-num">0%</span>
+                <span class="hero__stat-label">comisión</span>
+            </div>
+            <span class="hero__stat-div" aria-hidden="true"></span>
+            <div class="hero__stat">
+                <span class="hero__stat-num">77%</span>
+                <span class="hero__stat-label">prefiere sin inmobiliaria</span>
+            </div>
+            <span class="hero__stat-div" aria-hidden="true"></span>
+            <div class="hero__stat">
+                <span class="hero__stat-num">79%</span>
+                <span class="hero__stat-label">prefiere tratar directo con el dueño</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── PROBLEMA — Cream ─── -->
+<section class="s-cream" id="problema" aria-label="El problema con las inmobiliarias">
+    <div class="container">
+
+        <header class="s-header fade-in">
+            <span class="tag tag--navy">EL PROBLEMA</span>
+            <h2 class="s-title">Las inmobiliarias<br>no trabajan para vos.</h2>
+        </header>
+
+        <!-- Bento asimétrico -->
+        <div class="bento fade-in">
+            <div class="bento__tile bento__tile--coral bento__tile--tall">
+                <p class="bento__stat">1&nbsp;mes<br>+IVA</p>
+                <p class="bento__desc">Comisión para alquilar.<br>Va directo a la inmobiliaria.</p>
+            </div>
+            <div class="bento__tile bento__tile--navy bento__tile--tall">
+                <p class="bento__stat">27<small>días+</small></p>
+                <p class="bento__desc">Espera promedio para<br>cerrar un alquiler.</p>
+            </div>
+            <div class="bento__tile bento__tile--quote bento__tile--wide">
+                <blockquote class="bento__quote">
+                    "Publicás en un lado y te llaman de <strong>TODAS</strong> las inmobiliarias."
+                </blockquote>
+                <cite class="bento__cite">— Encuesta real, Uruguay</cite>
+            </div>
+            <div class="bento__tile bento__tile--pct">
+                <span class="bento__pct-num">77.8%</span>
+                <span class="bento__pct-label">de propietarios quiere manejarlo sin inmobiliaria</span>
+            </div>
+            <div class="bento__tile bento__tile--pct">
+                <span class="bento__pct-num">79.2%</span>
+                <span class="bento__pct-label">de inquilinos prefiere tratar directo con el dueño</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ─── SURVEY — Navy ─── -->
+<section class="s-navy" id="survey" aria-label="Encuesta rápida">
+    <div class="container">
+        <div class="survey fade-in">
+
+            <div class="survey__head">
+                <span class="tag tag--coral">QUICK SURVEY</span>
+                <h2 class="survey__title">¿Cuál es tu<br>mayor problema<br>al alquilar?</h2>
+                <p class="survey__sub">Tu voto nos ayuda a priorizar qué construir primero.</p>
+            </div>
+
+            <div class="survey__body">
+                <div class="survey-options" id="survey-options"
+                     role="group" aria-label="Seleccioná tu mayor problema">
+                    <button class="survey-opt" data-key="comision" aria-pressed="false">
+                        <span class="survey-opt__icon">💸</span>
+                        <span class="survey-opt__label">Comisión</span>
+                        <span class="survey-opt__desc">Ese mes + IVA que nunca volvés a ver</span>
+                    </button>
+                    <button class="survey-opt" data-key="garantias" aria-pressed="false">
+                        <span class="survey-opt__icon">📋</span>
+                        <span class="survey-opt__label">Garantías</span>
+                        <span class="survey-opt__desc">Requisitos imposibles de cumplir</span>
+                    </button>
+                    <button class="survey-opt" data-key="trato" aria-pressed="false">
+                        <span class="survey-opt__icon">📞</span>
+                        <span class="survey-opt__label">Trato</span>
+                        <span class="survey-opt__desc">Intermediarios que complican todo</span>
+                    </button>
+                    <button class="survey-opt" data-key="tiempo" aria-pressed="false">
+                        <span class="survey-opt__icon">⏳</span>
+                        <span class="survey-opt__label">Tiempo</span>
+                        <span class="survey-opt__desc">Semanas para cerrar algo simple</span>
+                    </button>
+                </div>
+                <div class="survey-results" id="survey-results" hidden aria-live="polite"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── SOLUCIÓN — Coral ─── -->
+<section class="s-coral" id="solucion" aria-label="Cómo funciona Akila">
+    <div class="container">
+        <header class="s-header fade-in">
+            <span class="tag tag--navy">CÓMO FUNCIONA</span>
+            <h2 class="s-title s-title--light">Directo.<br><em>Sin vueltas.</em></h2>
+        </header>
+
+        <div class="steps fade-in">
+            <div class="step">
+                <span class="step__num">01</span>
+                <h3 class="step__title">Publicás gratis</h3>
+                <p class="step__text">Fotos reales, precio total, condiciones claras.</p>
+            </div>
+            <span class="step__arrow" aria-hidden="true">→</span>
+            <div class="step">
+                <span class="step__num">02</span>
+                <h3 class="step__title">Conectan directo</h3>
+                <p class="step__text">Sin intermediarios. Sin ese mes&nbsp;+&nbsp;IVA.</p>
+            </div>
+            <span class="step__arrow" aria-hidden="true">→</span>
+            <div class="step">
+                <span class="step__num">03</span>
+                <h3 class="step__title">Cierran el trato</h3>
+                <p class="step__text">Visita, acuerdo, listo. Más rápido que nunca.</p>
+            </div>
+        </div>
+
+        <div class="cmp-table fade-in" role="table" aria-label="Comparación">
+            <div class="cmp-header" role="row">
+                <div class="cmp-col-empty" role="columnheader"></div>
+                <div class="cmp-col" role="columnheader">Inmobiliaria</div>
+                <div class="cmp-col cmp-col--hi" role="columnheader">Akila</div>
+            </div>
+            <div class="cmp-row" role="row"><div class="cmp-label" role="rowheader">Comisión</div><div class="cmp-cell cmp-cell--bad">1 mes + IVA</div><div class="cmp-cell cmp-cell--good">Sin comisión</div></div>
+            <div class="cmp-row" role="row"><div class="cmp-label" role="rowheader">Velocidad</div><div class="cmp-cell cmp-cell--bad">27+ días</div><div class="cmp-cell cmp-cell--good">Más rápido</div></div>
+            <div class="cmp-row" role="row"><div class="cmp-label" role="rowheader">Horario</div><div class="cmp-cell cmp-cell--bad">Oficina</div><div class="cmp-cell cmp-cell--good">24/7</div></div>
+            <div class="cmp-row" role="row"><div class="cmp-label" role="rowheader">Publicaciones</div><div class="cmp-cell cmp-cell--bad">Fantasma</div><div class="cmp-cell cmp-cell--good">Verificadas</div></div>
+            <div class="cmp-row" role="row"><div class="cmp-label" role="rowheader">Garantías</div><div class="cmp-cell cmp-cell--bad">Imposibles</div><div class="cmp-cell cmp-cell--good">Flexibles</div></div>
+            <div class="cmp-row" role="row"><div class="cmp-label" role="rowheader">Contacto</div><div class="cmp-cell cmp-cell--bad">Intermediarios</div><div class="cmp-cell cmp-cell--good">Directo</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── PROPUESTA — Cream ─── -->
+<section class="s-cream" id="propuesta" aria-label="Propuesta de valor">
+    <div class="container">
+        <header class="s-header fade-in">
+            <span class="tag tag--navy">PARA CADA UNO</span>
+            <h2 class="s-title">Lo que Akila<br>resuelve.</h2>
+        </header>
+        <div class="prop-grid">
+            <article class="prop-card fade-in">
+                <div class="prop-card__top">
+                    <span class="prop-tag">Para propietarios</span>
+                </div>
+                <ul class="prop-list">
+                    <li><span class="prop-check">✓</span>Sin ese mes + IVA que te come el presupuesto</li>
+                    <li><span class="prop-check">✓</span>Sin llamados de TODAS las inmobiliarias</li>
+                    <li><span class="prop-check">✓</span>Trato directo con inquilinos</li>
+                    <li><span class="prop-check">✓</span>Inquilinos verificados</li>
+                    <li><span class="prop-check">✓</span>Herramientas para publicar profesionalmente</li>
+                </ul>
+                <button class="btn btn--primary" id="propuesta-propietario" aria-haspopup="dialog">
+                    Sumar mi propiedad →
+                </button>
+            </article>
+            <article class="prop-card prop-card--navy fade-in">
+                <div class="prop-card__top">
+                    <span class="prop-tag prop-tag--lt">Para inquilinos</span>
+                </div>
+                <ul class="prop-list prop-list--lt">
+                    <li><span class="prop-check prop-check--coral">✓</span>Sin pagar 1 mes + IVA para alquilar</li>
+                    <li><span class="prop-check prop-check--coral">✓</span>Publicaciones reales, no fantasma</li>
+                    <li><span class="prop-check prop-check--coral">✓</span>Precio total con gastos comunes</li>
+                    <li><span class="prop-check prop-check--coral">✓</span>Contacto directo con el dueño</li>
+                    <li><span class="prop-check prop-check--coral">✓</span>Propietarios calificados</li>
+                </ul>
+                <button class="btn btn--on-navy" id="propuesta-inquilino" aria-haspopup="dialog">
+                    Buscar mi hogar →
+                </button>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ─── PROGRESO — Navy ─── -->
+<section class="s-navy" id="progreso" aria-label="Estado de desarrollo">
+    <div class="container">
+        <div class="progress-block fade-in">
+            <div class="progress-block__copy">
+                <span class="tag tag--coral">ESTADO</span>
+                <h2 class="progress-block__title">85% de<br>desarrollo.</h2>
+                <p class="progress-block__sub">Estamos en la recta final. Cada persona en la lista acelera el lanzamiento.</p>
+            </div>
+            <div class="progress-block__bar-area">
+                <div class="progress-meta">
+                    <span class="progress-label">Desarrollo</span>
+                    <span class="progress-pct-num">85%</span>
+                </div>
+                <div class="progress-track"
+                     role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
+                     aria-label="85% de desarrollo completado">
+                    <div class="progress-fill" data-pct="85"></div>
+                </div>
+                <div class="progress-milestones">
+                    <span class="pm">MVP</span>
+                    <span class="pm">Beta</span>
+                    <span class="pm pm--active">Pre-lanzamiento</span>
+                    <span class="pm">Lanzamiento</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── WAITLIST — Coral ─── -->
+<section class="s-coral" id="waitlist" aria-label="Lista de espera">
+    <div class="container waitlist fade-in">
+        <div class="waitlist__copy">
+            <span class="tag tag--navy">ACCESO ANTICIPADO</span>
+            <h2 class="waitlist__title">Sé de<br>los primeros.</h2>
+            <p class="waitlist__sub">Los primeros usuarios acceden antes que nadie y forman parte de la construcción de Akila.</p>
+            <div class="waitlist__counter">
+                <span class="waitlist__num" id="waitlist-count">143</span>
+                <span class="waitlist__label">personas esperando</span>
+            </div>
+        </div>
+        <form class="waitlist__form" id="waitlist-form" novalidate aria-label="Formulario lista de espera">
+            <div class="form-group">
+                <label for="w-email" class="form-label form-label--lt">Email</label>
+                <input type="email" id="w-email" name="email" class="form-input form-input--lt"
+                       placeholder="tu@email.com" autocomplete="email"
+                       aria-required="true" aria-describedby="w-email-err">
+                <span class="form-error form-error--lt" id="w-email-err" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+                <label for="w-phone" class="form-label form-label--lt">Teléfono</label>
+                <input type="tel" id="w-phone" name="phone" class="form-input form-input--lt"
+                       placeholder="+598 9X XXX XXXX" autocomplete="tel"
+                       aria-required="true" aria-describedby="w-phone-err">
+                <span class="form-error form-error--lt" id="w-phone-err" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+                <fieldset class="form-fieldset">
+                    <legend class="form-label form-label--lt">Soy</legend>
+                    <div class="form-radios form-radios--lt">
+                        <label class="form-radio form-radio--lt">
+                            <input type="radio" name="wrol" value="propietario" required>
+                            <span class="radio-box radio-box--lt"></span>
+                            <span>Propietario</span>
+                        </label>
+                        <label class="form-radio form-radio--lt">
+                            <input type="radio" name="wrol" value="inquilino">
+                            <span class="radio-box radio-box--lt"></span>
+                            <span>Inquilino</span>
+                        </label>
+                    </div>
+                    <span class="form-error form-error--lt" id="w-rol-err" role="alert" aria-live="polite"></span>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <label for="w-rec" class="form-label form-label--lt">
+                    Me gustaría que Akila tenga…
+                    <span class="form-label-opt form-label-opt--lt">(opcional)</span>
+                </label>
+                <textarea id="w-rec" name="rec" class="form-input form-input--lt form-textarea"
+                          placeholder="Contanos qué feature o mejora te gustaría ver..." rows="3"></textarea>
+            </div>
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn--on-coral">UNIRME A LA LISTA</button>
+            <p class="form-hint form-hint--lt">Sin spam · te avisamos cuando lancemos.</p>
+        </form>
+    </div>
+</section>
+
+<!-- ─── SUGERENCIAS — Cream ─── -->
+<section class="s-cream" id="sugerencias" aria-label="Sugerencias para Akila">
+    <div class="container">
+        <div class="suggest-block fade-in">
+            <div class="suggest-block__head">
+                <span class="tag tag--navy">PARA TODOS</span>
+                <h2 class="suggest-block__title">Akila, <em>solución para todos.</em></h2>
+                <p class="suggest-block__sub">El mercado de alquiler tiene que funcionar para las dos partes. No solo para las inmobiliarias.</p>
+            </div>
+            <form class="suggest-form" id="suggest-form" novalidate autocomplete="off">
+                <div class="suggest-wrap">
+                    <input type="text" id="suggest-input" class="suggest-input"
+                           maxlength="280" aria-label="Tu sugerencia para Akila" spellcheck="false">
+                    <button type="submit" class="suggest-btn" aria-label="Enviar sugerencia">→</button>
+                </div>
+                <p class="suggest-hint">Anónimo · sin registro · nos ayuda a construir Akila</p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FAQ — Cream ─── -->
+<section class="s-cream s-cream--border-top" id="faq" aria-label="Preguntas frecuentes">
+    <div class="container">
+        <header class="s-header fade-in">
+            <span class="tag tag--navy">FAQ</span>
+            <h2 class="s-title">Preguntas<br>frecuentes.</h2>
+        </header>
+        <div class="faq-list fade-in">
+            <details class="faq-item">
+                <summary class="faq-q">¿Es seguro alquilar sin inmobiliaria?</summary>
+                <div class="faq-a"><p>Akila verifica la identidad de propietarios e inquilinos y tiene sistema de reviews. La verificación de propiedad garantiza que quien publica es el dueño real.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-q">¿Qué pasa con las garantías?</summary>
+                <div class="faq-a"><p>Los propietarios eligen qué garantías aceptan: propietaria, aval bancario, seguro de alquiler u otras. Sin las exigencias imposibles de las inmobiliarias.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-q">¿Cómo sé que las publicaciones son reales?</summary>
+                <div class="faq-a"><p>Verificamos la propiedad antes de publicar. Sin fotos de stock ni publicaciones ya alquiladas. Lo que ves está disponible.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-q">¿Cuándo lanza Akila?</summary>
+                <div class="faq-a"><p>Estamos en desarrollo activo. Unite a la lista de espera para ser de los primeros en acceder.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-q">¿Akila cobra algo?</summary>
+                <div class="faq-a"><p>El acceso durante el lanzamiento es gratuito para los primeros usuarios. Nuestro modelo está pensado para ser significativamente más económico que el mes + IVA.</p></div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER MONUMENTAL ─── -->
+<footer class="footer" role="contentinfo">
+    <!-- Marca tipográfica gigante -->
+    <div class="footer__word-wrap" aria-hidden="true">
+        <span class="footer__word">AKILA</span>
+    </div>
+    <!-- Franja inferior con info -->
+    <div class="footer__bar">
+        <div class="container footer__bar-inner">
+            <div class="footer__brand">
+                <span class="footer__name">Akila</span>
+                <p class="footer__tagline">Alquilá sin intermediarios · Montevideo, Uruguay</p>
+            </div>
+            <nav class="footer__nav" aria-label="Contacto">
+                <a href="https://www.instagram.com/akila.uyy/" class="footer__link"
+                   target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:akilaapp@gmail.com" class="footer__link">akilaapp@gmail.com</a>
+            </nav>
+            <p class="footer__copy">© 2025 Akila <button class="footer__beta-trigger" id="beta-trigger" aria-label="Acceso beta">·</button></p>
+        </div>
+    </div>
+    <div class="footer__legal">
+        <p class="footer__legal-text">Datos protegidos según Ley N° 18.331 (Uruguay). Tu información se usa exclusivamente para el acceso anticipado de Akila.</p>
+    </div>
+</footer>
+
+<!-- ─── MODAL BETA ─── -->
+<div class="modal" id="modal-beta" role="dialog" aria-modal="true"
+     aria-labelledby="mb-title" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__box modal__box--sm">
+        <button class="modal__close" data-close-modal aria-label="Cerrar">×</button>
+        <div class="modal__head modal__head--navy">
+            <h2 id="mb-title" class="modal__title">Acceso Beta</h2>
+            <p class="modal__sub">Solo para testers.</p>
+        </div>
+        <form id="beta-form" novalidate autocomplete="off">
+            <div class="form-group">
+                <label for="beta-pwd" class="form-label">Contraseña</label>
+                <input type="password" id="beta-pwd" class="form-input"
+                       placeholder="••••••••" autocomplete="new-password">
+                <span class="form-error" id="beta-err" role="alert" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">Entrar →</button>
+        </form>
+    </div>
+</div>
+
+<!-- ─── MODAL PROPIETARIO ─── -->
+<div class="modal" id="modal-propietario" role="dialog" aria-modal="true"
+     aria-labelledby="mp-title" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__box">
+        <button class="modal__close" data-close-modal aria-label="Cerrar">×</button>
+        <div class="modal__head modal__head--coral">
+            <h2 id="mp-title" class="modal__title">Publicá tu propiedad</h2>
+            <p class="modal__sub">Sin comisión. Vos manejás todo.</p>
+        </div>
+        <div class="modal__tags">
+            <span>✓ Sin llamados de inmobiliarias</span>
+            <span>✓ Inquilinos verificados</span>
+        </div>
+        <form class="modal__form" id="modal-prop-form" novalidate>
+            <div class="form-group">
+                <label for="mp-email" class="form-label">Email</label>
+                <input type="email" id="mp-email" name="email" class="form-input"
+                       placeholder="tu@email.com" aria-required="true" aria-describedby="mp-e-err">
+                <span class="form-error" id="mp-e-err" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+                <label for="mp-phone" class="form-label">Teléfono</label>
+                <input type="tel" id="mp-phone" name="phone" class="form-input"
+                       placeholder="+598 9X XXX XXXX" aria-required="true" aria-describedby="mp-p-err">
+                <span class="form-error" id="mp-p-err" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+                <label for="mp-rec" class="form-label">
+                    Me gustaría que Akila tenga…
+                    <span class="form-label-opt">(opcional)</span>
+                </label>
+                <textarea id="mp-rec" name="rec" class="form-input form-textarea"
+                          rows="3" placeholder="Contanos..."></textarea>
+            </div>
+            <input type="hidden" name="rol" value="propietario">
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn--primary">QUIERO PUBLICAR</button>
+            <p class="form-hint">Sin spam · solo te avisamos cuando lancemos.</p>
+        </form>
+    </div>
+</div>
+
+<!-- ─── MODAL INQUILINO ─── -->
+<div class="modal" id="modal-inquilino" role="dialog" aria-modal="true"
+     aria-labelledby="mi-title" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__box">
+        <button class="modal__close" data-close-modal aria-label="Cerrar">×</button>
+        <div class="modal__head modal__head--navy">
+            <h2 id="mi-title" class="modal__title">Encontrá tu hogar</h2>
+            <p class="modal__sub">Sin pagar 1 mes + IVA. Directo con el dueño.</p>
+        </div>
+        <div class="modal__tags">
+            <span>✓ Publicaciones verificadas</span>
+            <span>✓ Precio total visible</span>
+        </div>
+        <form class="modal__form" id="modal-inq-form" novalidate>
+            <div class="form-group">
+                <label for="mi-email" class="form-label">Email</label>
+                <input type="email" id="mi-email" name="email" class="form-input"
+                       placeholder="tu@email.com" aria-required="true" aria-describedby="mi-e-err">
+                <span class="form-error" id="mi-e-err" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+                <label for="mi-phone" class="form-label">Teléfono</label>
+                <input type="tel" id="mi-phone" name="phone" class="form-input"
+                       placeholder="+598 9X XXX XXXX" aria-required="true" aria-describedby="mi-p-err">
+                <span class="form-error" id="mi-p-err" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+                <label for="mi-rec" class="form-label">
+                    Me gustaría que Akila tenga…
+                    <span class="form-label-opt">(opcional)</span>
+                </label>
+                <textarea id="mi-rec" name="rec" class="form-input form-textarea"
+                          rows="3" placeholder="Contanos..."></textarea>
+            </div>
+            <input type="hidden" name="rol" value="inquilino">
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn--primary">QUIERO ENCONTRAR MI HOGAR</button>
+            <p class="form-hint">Sin spam · solo te avisamos cuando lancemos.</p>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+['hero-form', 'waitlist-form', 'modal-prop-form', 'modal-inq-form'].forEach(function(id) {
+  var form = document.getElementById(id);
+  if (!form) return;
+  form.addEventListener('submit', function() {
+    if (isBot(form)) return;
+    var d = {};
+    new FormData(form).forEach(function(v, k) { d[k] = v; });
+    if (d.email && d.phone) sendSheet(d);
+  });
+});
+</script>
+</body>
+</html>
